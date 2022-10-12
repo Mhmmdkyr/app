@@ -1,0 +1,107 @@
+body {
+    direction: rtl !important;
+    unicode-bidi: embed !important;
+    text-align: right !important;
+}
+
+@media (min-width: 991px) {
+
+    .col-xs-1,
+    .col-xs-10,
+    .col-xs-11,
+    .col-xs-12,
+    .col-xs-2,
+    .col-xs-3,
+    .col-xs-4,
+    .col-xs-5,
+    .col-xs-6,
+    .col-xs-7,
+    .col-xs-8,
+    .col-xs-9 {
+        float: right;
+    }
+
+    .col-sm-1,
+    .col-sm-10,
+    .col-sm-11,
+    .col-sm-12,
+    .col-sm-2,
+    .col-sm-3,
+    .col-sm-4,
+    .col-sm-5,
+    .col-sm-6,
+    .col-sm-7,
+    .col-sm-8,
+    .col-sm-9 {
+        float: right;
+    }
+}
+
+.top-bar .top-menu-left {
+    float: right;
+}
+
+.top-bar .top-menu-right {
+    float: left;
+    text-align: left;
+}
+
+.top-bar .top-menu-right li {
+    float: right;
+}
+
+.top-menu .profile-dropdown img {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+.top-bar .top-menu .dropdown li a {
+    text-align: right;
+}
+
+.top-bar .top-menu .dropdown li a svg {
+    margin-right: 0;
+    margin-left: 2px;
+}
+
+.logo-banner .left {
+    float: right;
+}
+
+.logo-banner .right {
+    float: left;
+}
+
+.main-menu .navbar-nav {
+    float: right !important;
+    padding-right: 0;
+}
+
+.main-menu .navbar-nav>li {
+    float: right !important;
+}
+
+.main-menu .navbar-nav .li-search {
+    float: left !important;
+}
+
+.main-menu .navbar-right {
+    float: left !important;
+}
+
+.search-form {
+    right: auto;
+    left: 0;
+}
+.main-menu{
+    float: left !important
+}
+.main-menu>li{
+    float: right !important
+}
+.text-right{
+    text-align: left !important
+}
+.text-left{
+    text-align: right !important
+}
