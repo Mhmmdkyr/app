@@ -78,7 +78,6 @@ $(function () {
       return false;
     });
 
-    $('#back-to-top').tooltip('show');
     setTimeout(function () {
       $('.cookie-alert').css('bottom', 0)
     }, 3000)
