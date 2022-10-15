@@ -271,10 +271,13 @@ class Index extends Controller
 
   public function addNewsletter(Request $request)
   {
-    $validate = $request->validate([
-      'email' => ['required', 'string', 'email'],
-      'g-recaptcha-response' => ['required', new ReCaptcha]
-    ]);
+    $valid_area = [
+      'email' => ['required', 'string', 'email']
+    ];
+    if(config('settings.recaptcha') && isset(config('settings.recaptcha')->secret)){
+      $valid_area['g-recaptcha-response'] = ['required', new ReCaptcha];
+    }
+    $validate = $request->validate($valid_area);
     session()->push('newsletter_modal', 'close');
     if (Newsletter::where('email', $request->email)->count() == 0) {
       Newsletter::create(['email' => $request->email]);

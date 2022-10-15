@@ -63,6 +63,22 @@ $(function () {
   })
   $(document).ready(function () {
     $('.preloader').remove();
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 50) {
+        $('#back-to-top').fadeIn();
+      } else {
+        $('#back-to-top').fadeOut();
+      }
+    });
+    $('#back-to-top').click(function () {
+      $('#back-to-top').tooltip('hide');
+      $('body,html').animate({
+        scrollTop: 0
+      }, 800);
+      return false;
+    });
+
+    $('#back-to-top').tooltip('show');
     setTimeout(function () {
       $('.cookie-alert').css('bottom', 0)
     }, 3000)
@@ -141,7 +157,7 @@ $(function () {
     var lang = $('.language-select').val();
     var href = elm.attr('data-href') + "?type=" + type + "&lang=" + lang;
     location.href = href;
-})
+  })
   $("[data-toggle='ahtoogler']").click(function () {
     var elm = $(this);
     var target = elm.attr("data-target");

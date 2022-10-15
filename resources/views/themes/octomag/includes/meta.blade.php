@@ -22,14 +22,20 @@
 <meta property="og:url" content="{{ uri('post', $post->slug) }}" />
 <meta property="article:id" content="{{ $post->short_link }}" />
 <meta property="article:author" content="{{ $post->user->name }}" />
+@if ($post->categories && isset($post->categories[0]))
 <meta property="article:section" content="{{ $post->categories[0]->slug }}" />
+@endif
 <meta property="article:section:type" content="Detail Page" />
+@if ($post->categories && isset($post->categories[0]))
 <meta property="article:section:list" content="{{ $post->categories[0]->slug }}" />
+@endif
 <meta property="article:tag" content="{{ $meta['keywords'] }}" />
 <meta property="path-string" content="/posts/" />
 <meta property="last-ancestor-url" content="/posts/" />
 <meta property="dfp-entity-path" content="/posts" />
+@if ($post->categories && isset($post->categories[0]))
 <meta property="literal-category" content="{{ $post->categories[0]->category_title }}" />
+@endif
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="{{ image_url($post->images->featured_image, '1000x563') }}" />
 <meta name="twitter:url" content="{{ uri('post', $post->slug) }}" />

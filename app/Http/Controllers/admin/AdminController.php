@@ -231,7 +231,7 @@ class AdminController extends BaseController
             if($categories){
                 foreach($categories as $category){
                     $step = 0;
-                    $category_list[$lang->id][] = ['category_title' => $category->category_title, 'language_id' => $category->language_id, 'uniq_id' => $category->uniq_id, 'subs' => $category->subs];
+                    $category_list[$lang->id][] = ['category_title' => $category->category_title, 'language_id' => $category->language_id, 'uniq_id' => $category->uniq_id, 'subs' => $category->subs, 'id' => $category->uniq_id];
                 }
             }
         }

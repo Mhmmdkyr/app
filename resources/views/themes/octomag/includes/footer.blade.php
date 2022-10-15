@@ -367,6 +367,7 @@
         </div>
     </div>
 @endif
+<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top"><span class="fa fa-chevron-up"></span></a>
 <script>
     var base_url = '{{ url('/') }}';
     var token = '{{ csrf_token() }}';
