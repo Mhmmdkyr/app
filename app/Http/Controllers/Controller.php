@@ -64,7 +64,7 @@ class Controller extends BaseController
         });
         $all_posts = new Posts();
         $breakings = $all_posts->all_posts();
-        $breakings = $breakings->where('features', 'LIKE','breaking')->limit(10)->orderBy('publish_date', 'desc')->get();
+        $breakings = $breakings->where('features', 'LIKE','%breaking%')->limit(10)->orderBy('publish_date', 'desc')->get();
 
         $popular_posts = $all_posts->all_posts();
         $popular_posts = $popular_posts->limit(5)->orderBy('hit', 'DESC')->get();
