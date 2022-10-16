@@ -53,8 +53,8 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="name">{{ __('Your Name') }}</label>
-                                        <input type="text" class="form-control" id="name" name="name">
+                                        <label for="name">{{ __('Your Name') }} <b class="text-danger">*</b></label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
@@ -65,8 +65,8 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="email">{{ __('Your Email Address') }}</label>
-                                        <input type="text" class="form-control" id="email" name="email">
+                                        <label for="email">{{ __('Your Email Address') }} <b class="text-danger">*</b></label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
@@ -77,8 +77,8 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
-                                        <label for="message">{{ __('Message') }}</label>
-                                        <textarea class="form-control" id="message" name="message"></textarea>
+                                        <label for="message">{{ __('Message') }} <b class="text-danger">*</b></label>
+                                        <textarea class="form-control" id="message" name="message" required></textarea>
                                     </div>
                                 </div>
                                 @if (config('settings.recaptcha') && isset(config('settings.recaptcha')->secret))

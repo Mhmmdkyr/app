@@ -79,7 +79,7 @@ class Imager extends AdminController
             $sizes = explode(",", $request->sizes);
         }
         foreach ($request->file('images') as $file) {
-            $file_name = time() . rand(1, 100);
+            $file_name = $file->getClientOriginalName()."-".uniq_id('i');
             $extension = $file->extension();
             $name = $file_name . '.' . $extension;
             if (!in_array($extension, $this->allowed_extensions)) {

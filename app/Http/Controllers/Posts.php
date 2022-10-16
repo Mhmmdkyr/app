@@ -19,12 +19,12 @@ class Posts extends Controller
     public function detail($slug)
     {
         try {
-            $post = Post::where('slug', $slug)->where('language_id', config('app.active_lang.id'))->where('deleted_at', null)->first();
+            $post = Post::where('slug', $slug)->where('language_id', config('app.active_lang.id'))->where('deleted_at', null)->where('status', 'published')->first();
             if (!$post) {
                 return $this->render("404");
             }
-            $prev_post = Post::where('publish_date', '<', $post->publish_date)->orderBy('publish_date', 'desc')->first();
-            $next_post = Post::where('publish_date', '>', $post->publish_date)->orderBy('publish_date', 'asc')->first();
+            $prev_post = Post::where('publish_date', '<', $post->publish_date)->orderBy('publish_date', 'desc')->where('status', 'published')->first();
+            $next_post = Post::where('publish_date', '>', $post->publish_date)->orderBy('publish_date', 'asc')->where('status', 'published')->first();
             if (!$post) {
                 return view('error.404');
             }
@@ -53,7 +53,7 @@ class Posts extends Controller
             $meta = ['title' => $post->meta->meta_title, 'description' => $post->meta->meta_description, 'keywords' => $post->meta->meta_keywords];
             $releated_posts  = [];
             if ($post->categories && isset($post->categories[0])) {
-                $releated_posts = Post::whereRaw("FIND_IN_SET('" . $post->categories[0]->uniq_id . "', categories)")->paginate(3);
+                $releated_posts = Post::whereRaw("FIND_IN_SET('" . $post->categories[0]->uniq_id . "', categories)")->where('publish_date', '<=', Carbon::now())->where('status', 'published')->paginate(3);
             }
             return $this->render("post", ['post' => $post, 'prev' => $prev_post, 'next' => $next_post, 'meta' => $meta, 'releated_posts' => $releated_posts, 'post_favorites' => $favorites]);
         } catch (\Throwable $th) {
@@ -68,9 +68,15 @@ class Posts extends Controller
             return $this->render("404");
         }
         $search = $request->q;
-        $posts = Post::where('title', 'LIKE', '%' . $search . '%')->where('language_id', config('app.active_lang.id'))->paginate(20);
+        $posts = Post::where('title', 'LIKE', '%' . $search . '%')->where('language_id', config('app.active_lang.id'))->where('publish_date', '<=', Carbon::now())->where('status', 'published')->orderBy('publish_date', 'desc')->paginate(20);
         $meta = ['title' => __('Search result for ":q"', ['q' => $request->q]), 'description' => __('Search result for :q', ['q' => $request->q])];
         return $this->render("search", ['posts' => $posts, 'meta' => $meta]);
+    }
+    public function all_trends()
+    {
+        $posts = Post::where('language_id', config('app.active_lang.id'))->where('publish_date', '<=', Carbon::now())->where('status', 'published')->where('features', 'LIKE', '%recommended%')->orderBy('publish_date', 'desc')->paginate(20);
+        $meta = ['title' => __('Trends')];
+        return $this->render("trends", ['posts' => $posts, 'meta' => $meta]);
     }
     public function add_comment(Request $request, Post $post)
     {
@@ -133,7 +139,7 @@ class Posts extends Controller
         if (!$category) {
             return view('error.404');
         }
-        $posts = Post::whereRaw("FIND_IN_SET('" . $category->uniq_id . "', categories)")->paginate(1000);
+        $posts = Post::whereRaw("FIND_IN_SET('" . $category->uniq_id . "', categories)")->where('publish_date', '<=', Carbon::now())->where('status', 'published')->paginate(1000);
         $meta = ['title' => $category->meta->meta_title, 'description' => $category->meta->meta_description, 'keywords' => $category->meta->meta_keywords];
         return response()->view("rss-feed", ['category' => $category, 'posts' => $posts, 'meta' => $meta])->header('Content-Type', 'application/xml');
     }

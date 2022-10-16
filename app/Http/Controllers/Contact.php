@@ -22,13 +22,15 @@ class Contact extends Controller
 
     public function sendMessage(Request $request)
     {
-       
-        $validate = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'message' => 'required|string',
-            'g-recaptcha-response' => ['required', new ReCaptcha]
-        ]);
+       $valid_area = [
+           'name' => 'required',
+           'email' => 'required|email',
+           'message' => 'required|string',
+       ];
+       if (config('settings.recaptcha') && isset(config('settings.recaptcha')->secret)) {
+           $valid_area['g-recaptcha-response'] = ['required', new ReCaptcha];
+       }
+        $validate = $request->validate($valid_area);
         if (is_html($request->message)) {
             $output['status'] = 403;
             $output['message'] = __('Do not include HTML Code in the message.');

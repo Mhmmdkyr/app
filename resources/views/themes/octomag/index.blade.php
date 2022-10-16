@@ -80,7 +80,7 @@
                 <div class="trend-area">
                     <div class="trend-area-content">
                         <h3 class="float-left text-uppercase"><i class="fas fa-fire-alt"></i> {{ __('Trends') }}</h3>
-                        <a href="" class="all-trends float-right"><i class="fas fa-caret-right"></i>
+                        <a href="{{ uri('trends') }}" class="all-trends float-right"><i class="fas fa-caret-right"></i>
                             {{ __('All Trends') }}</a>
                         <div class="clear"></div>
                         <div class="row">

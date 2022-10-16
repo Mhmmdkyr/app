@@ -342,6 +342,7 @@
     "Use main domain": "Use main domain",
     "Use different domain": "Use different domain",
     "Accept Cookies": "Çerezleri Kabul Et",
+    "The given data was invalid": "Lütfen formdaki zorunlu alanları doldurun ve yeniden deneyin.",
     "messages": {
         "are_you_sure": "Emin misiniz?",
         "delete_message": "Evet, içeriği kaldır",

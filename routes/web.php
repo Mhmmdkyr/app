@@ -12,6 +12,7 @@ use App\Http\Controllers\Index;
 use App\Http\Controllers\Pages;
 use App\Http\Controllers\Posts;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Sitemap;
 use App\Models\Language;
 use App\Models\Post;
 use App\Models\Setting;
@@ -33,6 +34,7 @@ Route::localized(function () {
     Route::get('/', [Index::class, 'index'])->name('frontend.index.show');
     Route::get('/post/{slug}', [Posts::class, 'detail'])->name('frontend.posts.detail');
     Route::get('/search', [Posts::class, 'search'])->name('frontend.posts.search');
+    Route::get('/trends', [Posts::class, 'all_trends'])->name('frontend.posts.trends');
     Route::get('/category/{slug}', [Categories::class, 'detail'])->name('frontend.categories.detail');
     Route::get('/page/{slug}', [Pages::class, 'detail'])->name('frontend.categories.detail');
     Route::get('/all', [Categories::class, 'filteredPosts'])->name('frontend.filter.all');
@@ -83,6 +85,7 @@ Route::get('/dynamic/category-post/{category_id}', [DynamicProcess::class, 'getC
 Route::get('/switch-mode', [DynamicProcess::class, 'darkMode'])->name('dynamic.dark_mode');
 Route::get('/accept-cookie', [DynamicProcess::class, 'acceptCookie'])->name('dynamic.cookie_alert');
 Route::get('/close-newsletter', [DynamicProcess::class, 'closeNewsletter'])->name('dynamic.close_newsletter');
+Route::get('/sitemap.xml', [Sitemap::class, 'index'])->name('frontend.sitemap');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum']], function () {
 
     Route::get('/permission-denied', [AdminController::class, 'permissionDenied'])->name('admin.errors.permission');

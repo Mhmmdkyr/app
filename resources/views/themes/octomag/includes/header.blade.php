@@ -285,10 +285,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-8">
                 <div class="text-center">
-                    <h2>Search</h2>
+                    <h2>{{ __('Search') }}</h2>
                     <form action="{{ route('frontend.posts.search') }}" method="get">
                         <div class="input-wrapper">
-                            <input type="text" placeholder="{{ __('Search in posts...') }}" name="q"
+                            <input type="text" placeholder="{{ __('Search in posts') }}" name="q"
                                 required>
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </div>

@@ -64,6 +64,7 @@
 @if (config('settings.header_html'))
     {!! config('settings.header_html') !!}
 @endif
+<meta name="theme-color" content="{{ config('settings.color') ? config('settings.color') : '#0093ab' }}" />
 <script type="application/ld+json">
   {
       "@context": "https://schema.org",
