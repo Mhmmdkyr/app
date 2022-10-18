@@ -9,7 +9,7 @@ use Intervention\Image\Facades\Image;
 
 class Imager extends AdminController
 {
-    protected array $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+    protected $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
     public function show(Request $request)
     {
         return view('admin.common.imager');

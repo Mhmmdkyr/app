@@ -384,4 +384,4 @@
     {!! config('settings.footer_html') !!}
 @endif
 <script src="{{ url('/') }}/themes/{{ $theme->path }}/js/jquery.lazyload.js"></script>
-<script src="{{ url('/') }}/themes/{{ $theme->path }}/js/ahtaport.js"></script>
+<script src="{{ url('/') }}/themes/{{ $theme->path }}/js/ahtaport.min.js"></script>
