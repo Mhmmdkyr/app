@@ -206,7 +206,7 @@
                                                         <div class="col-sm-10 square">
                                                             <input type="text" class="form-control"
                                                                 name="settings[recaptcha][key]" id="grc_sitekey"
-                                                                value="{{ isset($settings['recaptcha']) && isset(settings['recaptcha']->key) ? $settings['recaptcha']->key : '' }}">
+                                                                value="{{ isset($settings['recaptcha']) && isset($settings['recaptcha']->key) ? $settings['recaptcha']->key : '' }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
