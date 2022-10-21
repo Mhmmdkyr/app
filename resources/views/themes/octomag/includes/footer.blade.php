@@ -372,16 +372,16 @@
     var base_url = '{{ url('/') }}';
     var token = '{{ csrf_token() }}';
 </script>
-<script src="{{ url('/') }}/themes/{{ $theme->path }}/js/jquery.min.js"></script>
-<script src="{{ url('/') }}/themes/{{ $theme->path }}/plugin/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="{{ url('/') }}/themes/{{ $theme->path }}/plugin/swiper/swiper-bundle.min.js"></script>
+<script src="{{ url('/') }}/themes/{{ $theme->path }}/js/jquery.min.js?version?<?=VERSION;?>"></script>
+<script src="{{ url('/') }}/themes/{{ $theme->path }}/plugin/bootstrap/bootstrap.bundle.min.js?version?<?=VERSION;?>"></script>
+<script src="{{ url('/') }}/themes/{{ $theme->path }}/plugin/swiper/swiper-bundle.min.js?version?<?=VERSION;?>"></script>
 @if (isset($post) && $post->type == 'gallery')
-    <link href="{{ url('/') }}/themes/{{ $theme->path }}/plugin/fancybox/jquery.fancybox.min.css"
+    <link href="{{ url('/') }}/themes/{{ $theme->path }}/plugin/fancybox/jquery.fancybox.min.css?version?<?=VERSION;?>"
         rel="stylesheet">
-    <script src="{{ url('/') }}/themes/{{ $theme->path }}/plugin/fancybox/jquery.fancybox.min.js"></script>
+    <script src="{{ url('/') }}/themes/{{ $theme->path }}/plugin/fancybox/jquery.fancybox.min.js?version?<?=VERSION;?>"></script>
 @endif
 @if(config('settings.footer_html'))
     {!! config('settings.footer_html') !!}
 @endif
-<script src="{{ url('/') }}/themes/{{ $theme->path }}/js/jquery.lazyload.js"></script>
-<script src="{{ url('/') }}/themes/{{ $theme->path }}/js/ahtaport.min.js"></script>
+<script src="{{ url('/') }}/themes/{{ $theme->path }}/js/jquery.lazyload.js?version?<?=VERSION;?>"></script>
+<script src="{{ url('/') }}/themes/{{ $theme->path }}/js/ahtaport.min.js?version?<?=VERSION;?>"></script>

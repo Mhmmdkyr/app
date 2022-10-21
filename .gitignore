@@ -1,1 +1,3 @@
 .ftpconfig
+.env
+app/Providers/_

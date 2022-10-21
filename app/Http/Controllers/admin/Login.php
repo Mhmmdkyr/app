@@ -22,7 +22,7 @@ class Login extends Controller
     {
         $this->validate($request, [
             'email'   => 'required|email',
-            'password'  => 'required|alphaNum|min:3'
+            'password'  => 'required|min:3'
         ]);
 
         $user_data = array(

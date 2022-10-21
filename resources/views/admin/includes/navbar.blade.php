@@ -31,9 +31,9 @@
 					</li>
 					<li>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="{{ route('frontend.user.profile') }}">Account Setting</a>
+						<a class="dropdown-item" href="{{ route('frontend.user.profile') }}">Profili Düzenle</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="{{ route('frontend.login.logout') }}">Logout</a>
+						<a class="dropdown-item" href="{{ route('frontend.login.logout') }}">Çıkış Yap</a>
 					</li>
 				</ul>
 			</li>

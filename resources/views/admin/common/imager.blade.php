@@ -6,8 +6,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" href="{{ url('/') }}/backend/css/common/imager.css">
-    <link rel="stylesheet" href="{{ url('/') }}/backend/css/common/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="{{ url('/') }}/backend/css/common/imager.css?version?<?=VERSION;?>">
+    <link rel="stylesheet" href="{{ url('/') }}/backend/css/common/jquery.fancybox.min.css?version?<?=VERSION;?>">
+    <style media="screen">
+
+    @keyframes spin {
+      from {
+          transform:rotate(0deg);
+      }
+      to {
+          transform:rotate(360deg);
+      }
+    }
+    .spin{
+      animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+    }
+    .uploading{
+      position:absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 12;
+      background:#fff;
+      padding-top: 140px;
+      display: none
+    }
+    .uploading.active{
+      display: block;
+    }
+    </style>
 </head>
 
 <body>
@@ -56,16 +87,24 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             </form>
                             <i data-feather="upload" style="width: 60px !important; height: 60px;"></i>
-                            <h4>Drop files to upload</h4>
-                            <small class="text-muted d-block mb-2">or</small>
-                            <P><a href="" class="btn btn-outline-primary">Select Files</a></P>
+                            <h4>Dosyaları buraya sürükleyin</h4>
+                            <small class="text-muted d-block mb-2">ya da</small>
+                            <P><a href="" class="btn btn-outline-primary">Dosya Seçin</a></P>
+
+
+                        </div>
+                        <div class="uploading text-center">
+                          <i data-feather="loader" class="spin text-muted"
+                                  style="width: 50px; height: 50px; display: inline-block; margin-bottom: 20px"></i>
+                                  <p><small>Dosyalarınız sunucuya yükleniyor...</small></p>
+                                  <h4 class="text-dark mt-0 pt-0">Lütfen Bekleyin</h4>
                         </div>
                     </div>
                     <div class="tab-pane fade show active pt-3 pb-2" id="library" role="tabpanel"
                         aria-labelledby="library-tab">
                         <div class="library-repository" style="padding-right: 10px !important">
                             <div class="row image-scaffold">
-                                <div class="loading-div text-muted">Loading...</div>
+                                <div class="loading-div text-muted">Yükleniyor...</div>
                             </div>
                         </div>
                         <div class="row">
@@ -102,11 +141,9 @@
         var lang_selected_images = "{{ __('Selected Images') }}";
         var csrf_token = '{{ csrf_token() }}';
     </script>
-    <script src="{{ url('/') }}/backend/js/common/common.js"></script>
-    <link rel="stylesheet" href="{{ url('/') }}/backend/admin/vendor/cropper/jquery.imageResizer.css" />
-    <script src="{{ url('/') }}/backend/admin/vendor/cropper/jquery.imageResizer.min.js"></script>
-    <script src="{{ url('/') }}/backend/js/common/jquery.fancybox.min.js"></script>
-    <script src="{{ url('/') }}/backend/js/common/imager.js"></script>
+    <script src="{{ url('/') }}/backend/js/common/common.js?version=<?=VERSION;?>"></script>
+    <script src="{{ url('/') }}/backend/js/common/jquery.fancybox.min.js?version=<?=VERSION;?>"></script>
+    <script src="{{ url('/') }}/backend/js/common/imager.js?version=<?=VERSION;?>"></script>
 </body>
 
 </html>

@@ -8,7 +8,7 @@
 	<link rel="icon" href="{{ url('/') }}/backend/img/icon.ico" type="image/x-icon"/>
 	<base href="{{ url('/') }}/">
 	<!-- Fonts and icons -->
-	<script src="{{ url('/') }}/backend/js/plugin/webfont/webfont.min.js"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/webfont/webfont.min.js?version=<?=VERSION;?>"></script>
 	<script>
 		WebFont.load({
 			google: {"families":["Inter:200,400,500,600"]},
@@ -18,9 +18,9 @@
 			}
 		});
 	</script>
-	<link rel="stylesheet" href="{{ url('/') }}/backend/css/bootstrap.min.css">
-	<link rel="stylesheet" href="{{ url('/') }}/backend/css/azzara.min.css">
-	<link rel="stylesheet" href="{{ url('/') }}/backend/css/app.css">
+	<link rel="stylesheet" href="{{ url('/') }}/backend/css/bootstrap.min.css?version=<?=VERSION;?>">
+	<link rel="stylesheet" href="{{ url('/') }}/backend/css/azzara.min.css?version=<?=VERSION;?>">
+	<link rel="stylesheet" href="{{ url('/') }}/backend/css/app.css?version=<?=VERSION;?>">
 	<script>
 		var base_url = "{{ url('/') }}";
 		var token = "{{ csrf_token() }}";
@@ -29,28 +29,28 @@
 			lang.{{ $key }} = '{{ $message }}'
 		@endforeach
 	</script>
-	<script src="{{ url('/') }}/backend/js/core/jquery.3.2.1.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/core/popper.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/core/bootstrap.min.js"></script>
-	<script src="{{ url('/') }}/backend/vendor/tinymce/tinymce.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/init.js"></script>
+	<script src="{{ url('/') }}/backend/js/core/jquery.3.2.1.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/core/popper.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/core/bootstrap.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/vendor/tinymce/tinymce.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/init.js?version=<?=VERSION;?>"></script>
 	@if(isset($imager) && $imager)
-	<script src="{{ url('/') }}/backend/js/imager.js"></script>
+	<script src="{{ url('/') }}/backend/js/imager.js?version=<?=VERSION;?>"></script>
 	@endif
-	<script src="{{ url('/') }}/backend/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/moment/moment.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/chart.js/chart.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/chart-circle/circles.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/sweetalert/sweetalert.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/ready.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/datepicker/bootstrap-datetimepicker.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
-	<script src="{{ url('/') }}/backend/js/plugin/sweetalert/sweetalert.min.js"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/moment/moment.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/chart.js/chart.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/jquery.sparkline/jquery.sparkline.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/chart-circle/circles.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/bootstrap-notify/bootstrap-notify.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/sweetalert/sweetalert.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/ready.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/datepicker/bootstrap-datetimepicker.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/bootstrap-tagsinput/bootstrap-tagsinput.min.js?version=<?=VERSION;?>"></script>
+	<script src="{{ url('/') }}/backend/js/plugin/sweetalert/sweetalert.min.js?version=<?=VERSION;?>"></script>
 </head>
 <body data-background-color="bg3">
 	<div class="wrapper">
@@ -60,7 +60,7 @@
 		<div class="main-header" data-background-color="white">
 			<!-- Logo Header -->
 			<div class="logo-header  mw-100">
-				
+
 				<a href="{{ route('admin.dashboard')}}" class="logo  mw-100">
 					<span class="navbar-brand mw-100"><img src="{{ url('/') }}/backend/img/logo-small.png" width="35" alt=""> <span class="site-text">{{ config('app.name', 'income') }}</span></span>
 				</a>

@@ -41,11 +41,15 @@
                             <span data-toggle="tooltip" data-placement="bottom" title="{{ __('Required Area') }}"
                                 class="text-danger float-right"><i
                                     class="fas fa-exclamation-triangle"></i></span></label><input type="text"
-                            name="password" id="inp-password" class="form-control" {{ $users ? '' : 'required' }}
-                            value="{{ $users ? $users->value : '' }}" required></div>
+                            name="password" id="inp-password" class="form-control" {{ $users ? '' : ' required ' }}
+                            value="{{ $users ? $users->value : '' }}" >
+                            @if($users)
+                            <small class="text-muted">Yanlızca kullanıcının şifresini değiştirmek için kullanın. Şifre değiştirmek istemiyorsanız boş bırakın.</small>
+                            @endif
+                          </div>
                     <div class="form-group"><label for="inp-role" class="float-left w-100">{{ __('Role') }} <span data-toggle="tooltip" data-placement="bottom" title="{{ __('Required Area') }}" class="text-danger float-right"><i class="fas fa-exclamation-triangle"></i></span></label>
                         <select name="role_id" id="role" class="form-control" required>
-                            <option value="">{{ __('Select Role') }}</option>
+                            <option value="">{{ __('Kullanıcı Rolünü Seçin') }}</option>
                             @foreach ($roles as $role)
                                 <option
                                     value="{{ $role->id }}"{{ $users && $users->role_id == $role->id ? ' selected' : '' }}>

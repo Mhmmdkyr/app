@@ -57,9 +57,9 @@
         <link rel="alternate" href="{{ url('/' . $lang->slug) }}" hreflang="{{ $lang->slug }}" />
     @endif
 @endforeach
-<link rel="stylesheet" href="{{ url('/') }}/themes/{{ $theme->path }}/css/ahtaport.min.css" />
+<link rel="stylesheet" href="{{ url('/') }}/themes/{{ $theme->path }}/css/ahtaport.min.css?version=<?=VERSION;?>" />
 @if (config('app.active_lang.rtl'))
-    <link rel="stylesheet" href="{{ url('/') }}/themes/{{ $theme->path }}/css/rtl.min.css" />
+    <link rel="stylesheet" href="{{ url('/') }}/themes/{{ $theme->path }}/css/rtl.min.css?version=<?=VERSION;?>" />
 @endif
 @if (config('settings.header_html'))
     {!! config('settings.header_html') !!}

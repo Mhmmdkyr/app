@@ -70,7 +70,7 @@ function delete_images() {
     }
     console.log(images)
 }
-function init(default_data = false) {
+function init(default_data = false, selecting_images = []) {
     var data = {
         target: queryString('target'),
         multiple: queryString('multiple'),
@@ -116,6 +116,19 @@ function init(default_data = false) {
                 if (response.total != $('.image-box').length) {
                     $('.image-scaffold').append('<div class="text-center load-more-tag"><a class="btn btn-sm btn-outline-primary ps-4 pe-4 pl-4 pr-4 load-more">Load more</a></div>')
                 }
+            }
+            if(selecting_images.length > 0){
+              if (queryString("multiple") == 'true') {
+                $(selecting_images).each(function(i, item){
+                    $('div[title="'+item+'"]').parent().addClass('active')
+                    selected_images();
+                    $('.add_image_button').click();
+                })
+              } else {
+                $('div[title="'+selecting_images[0]+'"]').parent().addClass('active')
+                selected_images();
+                $('.add_image_button').click();
+              }
             }
             $('.image-container').click(function () {
                 var elm = $(this);
@@ -191,6 +204,7 @@ $(document).ready(function () {
         $('#upload_form').submit();
     })
     $('#upload_form').on('submit', (function (e) {
+      $('.uploading').addClass('active');
         e.preventDefault();
         var form_data = new FormData();
         form_data.append("_token", csrf_token);
@@ -204,7 +218,6 @@ $(document).ready(function () {
         for (var index = 0; index < totalfiles; index++) {
             form_data.append("images[]", document.getElementById('upload-input').files[index]);
         }
-        console.log(form_data)
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
@@ -214,13 +227,15 @@ $(document).ready(function () {
             processData: false,
             success: function (data) {
                 if (data) {
+                  $('.uploading').removeClass('active');
                     $('.image-scaffold').html('');
-                    init();
+                    init(false, data);
                     $('#library-tab').click();
                 }
             },
             error: function (data) {
                 console.log(data)
+                $('.uploading').removeClass('active');
                 alert("The file you are trying to upload is not in the allowed formats. (jpg, jpeg, png or gif)")
             }
         });

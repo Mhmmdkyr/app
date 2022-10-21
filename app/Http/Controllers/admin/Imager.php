@@ -55,10 +55,13 @@ class Imager extends AdminController
             $add_files['uri'] = $file_uri;
             $add_files['full_uri'] = $file;
             $add_files['thumb'] = "thumbnails/" . $file_uri;
+            $add_files['created'] = strtotime(date("Y-m-d H:i:s", filemtime($storage_path.$file_uri)));
             $all_files[] = $add_files;
             $m++;
         }
-
+        usort($all_files, function($a, $b) {
+            return $a['created'] - $b['created'];
+        });
         $pages = round($m / $limit);
         $collection = ['files' => array_reverse($all_files), 'total' => $m, 'pages' => $pages];
         return response()->json($collection);
@@ -94,7 +97,7 @@ class Imager extends AdminController
                 $w = $wh[0];
                 $h = $wh[1];
                 $thumbnail_path = $file_path . "/thumbnails/" . $file_name . "-" . $thumbnail . "." . $extension;
-                $path = Image::make($file_path . "/" . $name)->fit($w, $h);
+                $path = Image::make($file_path . "/" . $name)->fit($w ? $w : NULL, $h ? $h : NULL);
                 $path->save($thumbnail_path, 80);
             }
             $files[] = $name;

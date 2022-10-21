@@ -139,7 +139,7 @@ class Posts extends Controller
         if (!$category) {
             return view('error.404');
         }
-        $posts = Post::whereRaw("FIND_IN_SET('" . $category->uniq_id . "', categories)")->where('publish_date', '<=', Carbon::now())->where('status', 'published')->paginate(1000);
+        $posts = Post::whereRaw("FIND_IN_SET('" . $category->uniq_id . "', categories)")->where('publish_date', '<=', Carbon::now())->where('status', 'published')->orderBy('publish_date', 'desc')->paginate(1000);
         $meta = ['title' => $category->meta->meta_title, 'description' => $category->meta->meta_description, 'keywords' => $category->meta->meta_keywords];
         return response()->view("rss-feed", ['category' => $category, 'posts' => $posts, 'meta' => $meta])->header('Content-Type', 'application/xml');
     }

@@ -30,7 +30,6 @@ $(document).ready(function () {
     tinymce.init({
         selector: ".editor",
         height: 500,
-        menubar: false,
         relative_urls : false,
         remove_script_host : false,
         convert_urls : true,
@@ -39,11 +38,9 @@ $(document).ready(function () {
                 tinymce.triggerSave();
             });
         },
-        plugins: [
-            "advlist autolink lists link charmap print preview anchor textcolor colorpicker",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste code wordcount imager table",
-        ],
+        language: 'tr_TR',
+        plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media template table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount tinymcespellchecker a11ychecker imagetools mediaembed  linkchecker contextmenu colorpicker textpattern code imager',
+  toolbar1: 'insert | undo redo |  formatselect | bold italic strikethrough forecolor backcolor | link unlink | media imager | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
         mobile: {
             theme: "mobile",
         },

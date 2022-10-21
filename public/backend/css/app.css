@@ -206,6 +206,10 @@ a.badge:hover{
     border-radius: 8px;
     margin: 10px;
 }
+.posttype-item{
+  text-decoration: none !important;
+  
+}
 .posttype-item-1 .icon-posttype{
     background-color:#ddf0de;
 }
@@ -221,9 +225,7 @@ a.badge:hover{
 .posttype-item-5 .icon-posttype{
     background-color:#e6ddf0;
 }
-.posttype-item{
-    opacity: 0.7
-}
+
 .posttype-item:hover{
     cursor:pointer;
     box-shadow: 0 0 25px rgba(0,0,0,0.2);
@@ -302,24 +304,24 @@ table {
     table-layout: fixed;
     border: 0 !important
   }
-  
+
   table caption {
     font-size: 1.5em;
     margin: .5em 0 .75em;
   }
-  
+
   table tr {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     padding: .35em;
   }
-  
+
   table th,
   table td {
     padding: .625em;
     text-align: left;
   }
-  
+
   table th {
     font-size: 12px!important;
     letter-spacing: .1em;
@@ -332,11 +334,11 @@ table {
     table {
       border: 0;
     }
-  
+
     table caption {
       font-size: 1.3em;
     }
-    
+
     table thead {
       border: none;
       clip: rect(0 0 0 0);
@@ -347,19 +349,19 @@ table {
       position: absolute;
       width: 1px;
     }
-    
+
     table tr {
       border-bottom: 3px solid #ddd;
       display: block;
       margin-bottom: .625em;
     }
-    
+
     table td {
       border-bottom: 1px solid #ddd;
       display: block;
       text-align: right;
     }
-    
+
     table td::before {
       /*
       * aria-label has no advantage, it won't be read inside a table
@@ -370,15 +372,15 @@ table {
       font-weight: bold;
       text-transform: uppercase;
     }
-    
+
     table td:last-child {
       border-bottom: 0;
     }
   }
-  
-  
-  
-  
+
+
+
+
   .gallery-container figure {
     margin: 0;
     display: grid;
@@ -418,27 +420,27 @@ table {
     column-gap: 10px;
   }
   .required-input::after {
-    content:"\f071"; 
+    content:"\f071";
     font-family: 'Font Awesome 5 Solid';
     font-weight: 900;
     color: #f3545d;
-    position: absolute; 
-    margin: 10px 10px 0px -20px; 
+    position: absolute;
+    margin: 10px 10px 0px -20px;
     right: 5px;
-    font-size: 12px; 
+    font-size: 12px;
  }
  .container-alert {
     box-sizing: border-box
   }
-  
+
   .container-alert .alert {
     margin-bottom: 10px
   }
-  
+
   .container-alert .alert:last-child {
     margin-bottom: 0
   }
-  
+
   .alert {
     width: 100%;
     padding: 15px;
@@ -453,7 +455,7 @@ table {
     font-size: 16px;
     box-shadow: none !important
   }
-  
+
   .alert .alert--close,
   .alert .alert--icon {
     height: 100%;
@@ -465,7 +467,7 @@ table {
     align-items: center;
     font-size: 20px
   }
-  
+
   .alert .alert--close_absolute,
   .alert .alert--icon_absolute {
     position: absolute;
@@ -475,51 +477,51 @@ table {
     align-items: flex-start;
     height: auto
   }
-  
+
   .alert .alert--icon {
     margin-right: 10px
   }
-  
+
   .alert .alert--close {
     margin-left: 10px;
     opacity: .7;
     transition: .5s;
     cursor: pointer
   }
-  
+
   .alert .alert--close:hover {
     opacity: 1
   }
-  
+
   .alert .alert--content {
     width: 100%;
     line-height: 1.5
   }
-  
+
   .alert .alert--buttons {
     width: 100%;
     margin-top: 10px
   }
-  
+
   .alert-sm {
     padding: 10px;
     font-size: 14px
   }
-  
+
   .alert-sm .alert--close,
   .alert-sm .alert--icon {
     font-size: 16px
   }
-  
+
   .alert-lg {
     font-size: 26px
   }
-  
+
   .alert-lg .alert--close,
   .alert-lg .alert--icon {
     font-size: 26px
   }
-  
+
   .alert .hr {
     height: 1px;
     width: 100%;
@@ -527,57 +529,57 @@ table {
     background: #ddd;
     margin: 10px 0
   }
-  
+
   .alert-success {
     border-color: #2ed573;
     background: #c3f3d7;
     color: #23ad5c
   }
-  
+
   .alert-success .hr {
     background: #23ad5c
   }
-  
+
   .alert-danger {
     border-color: #ff4757;
     background: #ffe0e3;
     color: #ff4757
   }
-  
+
   .alert-danger .hr {
     background: #ff4757
   }
-  
+
   .alert-warning {
     border-color: #ffa502;
     background: #ffdb9b;
     color: #ce8500
   }
-  
+
   .alert-warning .hr {
     background: #ce8500
   }
-  
+
   .alert-info {
     border-color: #71c9ff;
     background: #d7f0ff;
     color: #3eb6ff
   }
-  
+
   .alert-info .hr {
     background: #3eb6ff
   }
-  
+
   .alert-dark {
     border-color: #333;
     background: #4d4d4d;
     color: #ccc
   }
-  
+
   .alert-dark .hr {
     background: #1a1a1a
   }
-  
+
   @keyframes showAlert {
     from {
       opacity: 0;
@@ -587,7 +589,7 @@ table {
       opacity: 1
     }
   }
-  
+
   .alert {
     transition: .5s ease-in-out;
     visibility: visible;
@@ -598,11 +600,11 @@ table {
     animation-duration: .5s;
     animation-fill-mode: both
   }
-  
+
   .alert.alert-none {
     display: none
   }
-  
+
   .fixed-alerts {
     box-sizing: border-box;
     position: fixed;
@@ -610,28 +612,28 @@ table {
     width: calc(100% - 20px);
     max-width: calc(400px - 20px)
   }
-  
+
   .fixed-alerts_bottom {
     bottom: 10px
   }
-  
+
   .fixed-alerts_top {
     top: 10px
   }
-  
+
   .fixed-alerts_right {
     right: 10px
   }
-  
+
   .fixed-alerts_left {
     left: 10px
   }
-  
+
   .fixed-alerts .alert {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
     margin-bottom: 10px
   }
-  
+
   .fixed-alerts .alert:last-child {
     margin-bottom: 0
   }

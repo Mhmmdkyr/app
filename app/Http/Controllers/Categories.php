@@ -20,7 +20,7 @@ class Categories extends Controller
         if(!$category){
             return $this->render("404");
         }
-        $posts = Post::whereRaw("FIND_IN_SET('".$category->uniq_id."', categories)")->where('publish_date', '<=', Carbon::now())->where('status', 'published')->where('language_id', config('app.active_lang.id'))->paginate(15);
+        $posts = Post::whereRaw("FIND_IN_SET('".$category->uniq_id."', categories)")->where('publish_date', '<=', Carbon::now())->where('status', 'published')->where('language_id', config('app.active_lang.id'))->orderBy('publish_date', 'desc')->paginate(15);
         $meta = ['title' => $category->meta->meta_title, 'description' => $category->meta->meta_description, 'keywords' => $category->meta->meta_keywords];
         return $this->render("category", ['category' => $category, 'posts' => $posts, 'meta' => $meta]);
     }

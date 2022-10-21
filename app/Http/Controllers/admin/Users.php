@@ -70,7 +70,6 @@ class Users extends AdminController
             $validated = $request->validate([
                 'name' => 'required|max:128',
                 'email' => 'required|email|unique:users',
-                'password' => 'required',
                 'role_id' => 'required',
             ], $validate_message);
         } else {
@@ -91,7 +90,7 @@ class Users extends AdminController
                 'remember_token' => uniqid(),
                 'about' => $request->about ? json_encode($request->about) : NULL
             ];
-            if ($request->password == '' && $user_id) {
+            if (!$request->password && $user_id) {
                 unset($fields['password']);
             }
             if ($user_id) {

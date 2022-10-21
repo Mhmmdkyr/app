@@ -51,7 +51,7 @@ class Index extends Controller
     $home_blocks = Category::where('shown', 'LIKE', '%"home_enable":"1"%')->where('language_id', config('app.active_lang.id'))->limit(10)->get();
     $blocks = [];
     foreach ($home_blocks as $block) {
-      $block->posts = $all_posts->all_posts()->whereRaw("FIND_IN_SET('" . $block->uniq_id . "', categories)")->take(10)->get();
+      $block->posts = $all_posts->all_posts()->whereRaw("FIND_IN_SET('" . $block->uniq_id . "', categories)")->orderBy('publish_date', 'desc')->take(10)->get();
       $blocks[] = $block;
     }
     return $this->render(
@@ -78,7 +78,7 @@ class Index extends Controller
   {
     $this->validate($request, [
       'email'   => 'required|email',
-      'password'  => 'required|alphaNum|min:3'
+      'password'  => 'required|min:3'
     ]);
 
     $user_data = array(
@@ -107,8 +107,8 @@ class Index extends Controller
     $validation = $request->validate([
       'name' => 'required',
       'email' => 'required|unique:users|max:255',
-      'password' => 'required',
-      'confirm_password' => 'required'
+      'password' => 'required|min:3',
+      'confirm_password' => 'required|min:3'
     ]);
     list($username, $domain) = explode('@', $request->email);
 
@@ -241,7 +241,7 @@ class Index extends Controller
   {
     $validate = $request->validate([
       'email' => 'required|email',
-      'password' => 'required',
+      'password' => 'required|min:3',
       'confirm_password' => 'required'
     ]);
 
@@ -283,7 +283,7 @@ class Index extends Controller
       Newsletter::create(['email' => $request->email]);
       return response()->json(['message' => __('Your subscription has been successfully registered.')]);
     } else {
-      return response()->json(['message' => 'This email address is already registered']);
+      return response()->json(['message' => __('This email address is already registered')]);
     }
   }
 }
