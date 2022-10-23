@@ -104,12 +104,12 @@
                     <div class="col-lg-3 col-md-3">
                         <div class="logo">
                             <a href="{{ uri('') }}">
-                                <img @if (session()->has('dark_mode')) src="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
+                                <img @if (session()->has('dark_mode')) src="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
                                 @else
-                                src="{{ config('settings.logo') ? image_url(config('settings.logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}" @endif
-                                    data-light="{{ config('settings.logo') ? image_url(config('settings.logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}"
-                                    data-dark="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
-                                    height="25" alt="{{ config('settings.title') }}">
+                                src="{{ config('settings.logo') ? image_url(config('settings.logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}" @endif
+                                    data-light="{{ config('settings.logo') ? image_url(config('settings.logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}"
+                                    data-dark="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
+                                    alt="{{ config('settings.title') }}">
                             </a>
                         </div>
                     </div>
@@ -170,12 +170,12 @@
                 <div class="col-8">
                     <div class="logo text-center">
                         <a href="{{ uri('') }}">
-                            <img @if (session()->has('dark_mode')) src="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
+                            <img @if (session()->has('dark_mode')) src="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
                                 @else
-                                src="{{ config('settings.logo') ? image_url(config('settings.logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}" @endif
-                                data-light="{{ config('settings.logo') ? image_url(config('settings.logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}"
-                                data-dark="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
-                                height="25" alt="{{ config('settings.title') }}">
+                                src="{{ config('settings.logo') ? image_url(config('settings.logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}" @endif
+                                data-light="{{ config('settings.logo') ? image_url(config('settings.logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}"
+                                data-dark="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
+                                alt="{{ config('settings.title') }}">
                         </a>
                     </div>
                 </div>
@@ -190,12 +190,12 @@
                 <div class="col-10">
                     <div class="logo">
                         <a href="{{ uri('') }}">
-                            <img @if (session()->has('dark_mode')) src="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
+                            <img @if (session()->has('dark_mode')) src="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
                                 @else
-                                src="{{ config('settings.logo') ? image_url(config('settings.logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}" @endif
-                                data-light="{{ config('settings.logo') ? image_url(config('settings.logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}"
-                                data-dark="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
-                                height="25" alt="{{ config('settings.title') }}">
+                                src="{{ config('settings.logo') ? image_url(config('settings.logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}" @endif
+                                data-light="{{ config('settings.logo') ? image_url(config('settings.logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/logo.png' }}"
+                                data-dark="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/footer-logo.png' }}"
+                                alt="{{ config('settings.title') }}">
                         </a>
                     </div>
                 </div>

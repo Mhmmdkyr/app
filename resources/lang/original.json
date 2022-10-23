@@ -343,6 +343,7 @@
     "Use different domain": "Use different domain",
     "Accept Cookies": "Accept Cookies",
     "The given data was invalid": "The given data was invalid",
+    "You may also be interested in;": "You may also be interested in;",
     "messages": {
         "are_you_sure": "Are you sure?",
         "delete_message": "This item will be deleted. Do you confirm?",

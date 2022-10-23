@@ -233,7 +233,7 @@
                                                                     'name' => 'settings[logo]',
                                                                     'info_text' => false,
                                                                     'dir' => 'others',
-                                                                    'sizes' => ['308x60'],
+                                                                    'sizes' => ['220x0'],
                                                                     'selected_image' => isset($settings['logo'])
                                                                         ? $settings['logo']
                                                                         : config('settings.logo'),
@@ -251,7 +251,7 @@
                                                                     'name' => 'settings[footer_logo]',
                                                                     'info_text' => false,
                                                                     'dir' => 'others',
-                                                                    'sizes' => ['308x60'],
+                                                                    'sizes' => ['220x0'],
                                                                     'selected_image' => isset(
                                                                         $settings['footer_logo']
                                                                     )

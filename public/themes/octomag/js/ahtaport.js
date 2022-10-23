@@ -97,7 +97,7 @@ $(function () {
       elm.parent().find('a').removeClass('active');
       elm.parent().find('a').addClass('disabled');
       elm.addClass('active')
-      elm.parents('.megamenu').find('.sbanners').html('Loading');
+      elm.parents('.megamenu').find('.sbanners').html('Yükleniyor');
       var url = base_url + "/dynamic/category-post/" + category_id
       $.get(url, function (response) {
         elm.parents('.megamenu').find('.sbanners').html(response);

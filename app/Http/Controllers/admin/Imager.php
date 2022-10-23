@@ -89,7 +89,7 @@ class Imager extends AdminController
                 return response()->json(['message' => 'Not allowed file format', 'status' => 403], 403);
             }
             $file->move($file_path, $name);
-            $path = Image::make($file_path . "/" . $name)->fit(256, 256);
+            $path = Image::make($file_path . "/" . $name)->resize(256, 256);
             $path->save($file_path . "/thumbnails/" . $name, 60);
 
             foreach ($sizes as $thumbnail) {
@@ -97,7 +97,7 @@ class Imager extends AdminController
                 $w = $wh[0];
                 $h = $wh[1];
                 $thumbnail_path = $file_path . "/thumbnails/" . $file_name . "-" . $thumbnail . "." . $extension;
-                $path = Image::make($file_path . "/" . $name)->fit($w ? $w : NULL, $h ? $h : NULL);
+                $path = Image::make($file_path . "/" . $name)->resize($w ? $w : NULL, $h ? $h : NULL);
                 $path->save($thumbnail_path, 80);
             }
             $files[] = $name;

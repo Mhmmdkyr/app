@@ -6,7 +6,7 @@
                     <div class="footer-widget footer-widget-1">
                         <div class="footer-logo white">
                             <a href="index.html" class="logo-text"> <img
-                                    src="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '308x60') : url('/') . '/themes/' . $theme->path . '/img/logo-footer.png' }}"
+                                    src="{{ config('settings.footer_logo') ? image_url(config('settings.footer_logo'), '220x0') : url('/') . '/themes/' . $theme->path . '/img/logo-footer.png' }}"
                                     alt="logo"></a>
                         </div>
                         <h5 class="footer-subtitle">{{ $settings['footer_text'] }}</h5>

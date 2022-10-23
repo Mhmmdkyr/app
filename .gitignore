@@ -1,3 +1,7 @@
 .ftpconfig
 .env
 app/Providers/_
+.vscode
+.DS_Store
+**/.DS_Store
+**/**.log

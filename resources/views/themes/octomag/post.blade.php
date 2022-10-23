@@ -205,7 +205,7 @@
                             @if ($releated_posts)
                             <div class="row pt-3 pb-3">
                                 <div class="col-lg-12 col-md-12">
-                                    <h3>Releated Posts</h3>
+                                    <h3>{{ __('You may also be interested in;') }}</h3>
                                 </div>
                                 @foreach ($releated_posts as $i => $post)
                                 <div class="col-lg-4 col-md-4">
