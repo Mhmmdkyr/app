@@ -48,9 +48,6 @@ $(document).ready(function () {
         $('#already-' + id).removeClass('show active');
         $(target).val("")
     })
-
-  
-    
 })
 function single_delete(elm){
     var elm =  $(elm)

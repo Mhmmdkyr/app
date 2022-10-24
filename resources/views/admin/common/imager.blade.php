@@ -6,38 +6,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" href="{{ url('/') }}/backend/css/common/imager.css?version?<?=VERSION;?>">
-    <link rel="stylesheet" href="{{ url('/') }}/backend/css/common/jquery.fancybox.min.css?version?<?=VERSION;?>">
+    <link rel="stylesheet" href="{{ url('/') }}/backend/css/common/imager.css?version?<?= VERSION ?>">
+    <link rel="stylesheet" href="{{ url('/') }}/backend/css/common/jquery.fancybox.min.css?version?<?= VERSION ?>">
+    <link rel="stylesheet" href="{{ url('/') }}/backend/css/jquery.Jcrop.css?version=<?= VERSION ?>" />
     <style media="screen">
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
 
-    @keyframes spin {
-      from {
-          transform:rotate(0deg);
-      }
-      to {
-          transform:rotate(360deg);
-      }
-    }
-    .spin{
-      animation-name: spin;
-  animation-duration: 5000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-    }
-    .uploading{
-      position:absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      z-index: 12;
-      background:#fff;
-      padding-top: 140px;
-      display: none
-    }
-    .uploading.active{
-      display: block;
-    }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spin {
+            animation-name: spin;
+            animation-duration: 5000ms;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .uploading {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 12;
+            background: #fff;
+            padding-top: 140px;
+            display: none
+        }
+
+        .uploading.active {
+            display: block;
+        }
     </style>
 </head>
 
@@ -94,10 +98,10 @@
 
                         </div>
                         <div class="uploading text-center">
-                          <i data-feather="loader" class="spin text-muted"
-                                  style="width: 50px; height: 50px; display: inline-block; margin-bottom: 20px"></i>
-                                  <p><small>Dosyalarınız sunucuya yükleniyor...</small></p>
-                                  <h4 class="text-dark mt-0 pt-0">Lütfen Bekleyin</h4>
+                            <i data-feather="loader" class="spin text-muted"
+                                style="width: 50px; height: 50px; display: inline-block; margin-bottom: 20px"></i>
+                            <p><small>Dosyalarınız sunucuya yükleniyor...</small></p>
+                            <h4 class="text-dark mt-0 pt-0">Lütfen Bekleyin</h4>
                         </div>
                     </div>
                     <div class="tab-pane fade show active pt-3 pb-2" id="library" role="tabpanel"
@@ -124,7 +128,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade p-0" id="cropper" role="tabpanel" aria-labelledby="cropper-tab" >
+                    <div class="tab-pane fade p-0" id="cropper" role="tabpanel" aria-labelledby="cropper-tab">
                         <div id="cropper-main" style="width: 100%; height: calc(100vh - 155px); overflow: hidden">
                         </div>
 
@@ -141,9 +145,11 @@
         var lang_selected_images = "{{ __('Selected Images') }}";
         var csrf_token = '{{ csrf_token() }}';
     </script>
-    <script src="{{ url('/') }}/backend/js/common/common.js?version=<?=VERSION;?>"></script>
-    <script src="{{ url('/') }}/backend/js/common/jquery.fancybox.min.js?version=<?=VERSION;?>"></script>
-    <script src="{{ url('/') }}/backend/js/common/imager.js?version=<?=VERSION;?>"></script>
+    <script src="{{ url('/') }}/backend/js/common/common.js?version=<?= VERSION ?>"></script>
+    <script src="{{ url('/') }}/backend/js/common/jquery.fancybox.min.js?version=<?= VERSION ?>"></script>
+    <script src="{{ url('/') }}/backend/js/jquery.Jcrop.js?version=<?= VERSION ?>"></script>
+    <script src="{{ url('/') }}/backend/js/common/imager.js?version=<?= VERSION ?>"></script>
+    
 </body>
 
 </html>

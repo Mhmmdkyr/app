@@ -126,7 +126,7 @@
                                         </td>
                                         <td>
                                             <img style="border-radius: 4px; border: 1px solid #dedede; box-shadow:  0 0 10px rgba(0,0,0,0.1)"
-                                                src="{{ image_url($item->images->featured_image, '160x140') }}"
+                                                src="{{ image_url($item->images->featured_image, '500x281') }}"
                                                 width="70" alt="">
                                         </td>
                                         <td>

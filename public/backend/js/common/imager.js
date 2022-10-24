@@ -43,18 +43,7 @@ function selected_images() {
     }
     if (queryString('multiple') != 'true' && queryString('cropper') == 'true') {
         $('#cropper-tab').click();
-        setTimeout(function () {
-            $('#cropper-main').imageResizer({
-				image: url + "/uploads/" + images,
-				 imgFormat: queryString('w') + "x" + queryString("h"), // Formats: 3/2, 200x360, auto
-				// circleCrop: true,
-				// outBoundColor: 'white', // black, white
-				btnDoneAttr: '.resize-done'
-			}, function (imgResized) {
-				console.log(imgResized)
-			})
-
-        }, 1000)
+        
     }
 
     return images;
