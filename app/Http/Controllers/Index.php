@@ -19,13 +19,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Rules\ReCaptcha;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use ZipArchive;
 
 class Index extends Controller
 {
   public function index()
   {
-    
+
     $all_posts = new Posts();
     $sliders = $all_posts->all_posts();
     $sliders = $sliders->where('features', 'LIKE', '%slider%')->limit(10)->orderBy('publish_date', 'desc')->get();
@@ -274,7 +277,7 @@ class Index extends Controller
     $valid_area = [
       'email' => ['required', 'string', 'email']
     ];
-    if(config('settings.recaptcha') && isset(config('settings.recaptcha')->secret)){
+    if (config('settings.recaptcha') && isset(config('settings.recaptcha')->secret)) {
       $valid_area['g-recaptcha-response'] = ['required', new ReCaptcha];
     }
     $validate = $request->validate($valid_area);

@@ -97,6 +97,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum']], function (
 
     // Dashboard Route
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard/update-check', [Dashboard::class, 'update_detector'])->name('admin.dashboard.update_detect');
+    Route::post('/dashboard/updater', [Dashboard::class, 'updater'])->name('admin.dashboard.updater');
 
 });
 $modules_routes = glob(base_path() . "/routes/modules/admin/*.php");

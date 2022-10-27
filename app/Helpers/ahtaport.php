@@ -244,3 +244,4 @@ function share_link($post)
     }
     return $url;
 }
+

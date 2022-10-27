@@ -10,6 +10,9 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use ZipArchive;
 
 class Dashboard extends AdminController
 {
@@ -46,5 +49,46 @@ class Dashboard extends AdminController
             'registered_users' => $users_count,
             'latest_users' => $latest_users,
         ]);
+    }
+
+    public function update_detector(){
+        $system_version = env('VERSION');
+        $system_version = $system_version;
+        $response = Http::get('https://updater.neto.com.tr/incore/updater.php');
+        $upto = false;
+        if($response){
+            $response = json_decode($response);
+            $version = $response->version;
+            if($version > $system_version){
+                $upto = true;
+            }
+        }
+        return response()->json([
+            'update' => $upto,
+            'message' => 'Yeni bir güncelleme mevcut. Sisteminizi şimdi <b>'.$version.'</b> sürümüne yükseltebilirsiniz.'
+        ]); 
+    }
+    public function updater() {
+        $upto = false;
+        $response = Http::post('https://updater.neto.com.tr/incore/updater.php', [
+            'domain' => 'incore.neto.com.tr'
+          ]);
+          if ($response) {
+            $response = json_decode($response);
+            if ($response->status == 200) {
+              $file = base64_decode($response->file);
+              Storage::disk('local')->put('updater/update.zip', $file);
+              $zip = new ZipArchive;
+              if ($zip->open(storage_path('app/updater')."/update.zip") === TRUE) {
+                $zip->extractTo(base_path(''));
+                $zip->close();
+                $upto = true;
+              }
+            }
+          }
+          return response()->json([
+            'update' => $upto,
+            'message' => '<p>Sisteminiz başarılı bir şekilde <b>'.$response->version.'</b> sürümüne yükseltildi.</p>'.$response->features
+        ]); 
     }
 }
