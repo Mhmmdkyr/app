@@ -215,6 +215,7 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data) {
+                console.log(data)
                 if (data) {
                   $('.uploading').removeClass('active');
                     $('.image-scaffold').html('');

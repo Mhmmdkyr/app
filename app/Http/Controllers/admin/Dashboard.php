@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class Dashboard extends AdminController
 {
@@ -30,16 +31,8 @@ class Dashboard extends AdminController
             ]
         );*/
         $posts = Post::get();
-        $published_posts = $posts->filter(function($q){
-            if($q->status){
-                return true;
-            }
-        })->count();
-        $drafted_posts = $posts->filter(function($q){
-            if(!$q->status){
-                return true;
-            }
-        })->count();
+        $published_posts = Post::where('status', 'published')->where('publish_date', '<=', Carbon::now())->where('deleted_at', null)->where('language_id', config('app.active_lang.id'))->count();
+        $drafted_posts = Post::where('status', 'drafted')->where('deleted_at', null)->where('language_id', config('app.active_lang.id'))->count();
         $pending_comments_count = Comment::where('status', 0)->count();
         $pending_comments = Comment::where('status', 0)->take(4)->get();;
         $users = User::get();
