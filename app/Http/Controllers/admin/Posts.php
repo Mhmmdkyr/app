@@ -26,24 +26,9 @@ class Posts extends AdminController
             $lang = config('app.active_lang')->id;
         }
         $posts = $posts->where('language_id',  $lang);
-        $publish_count = $posts->get()->filter(function ($q) {
-            if ($q->status == 'published') {
-                return true;
-            }
-            return false;
-        })->count();
-        $drafted_count = $posts->get()->filter(function ($q) {
-            if ($q->status == 'drafted') {
-                return true;
-            }
-            return false;
-        })->count();
-        $trashed_count = $posts->withTrashed()->get()->filter(function ($q) {
-            if ($q->trashed()) {
-                return true;
-            }
-            return false;
-        })->count();
+        $publish_count = ModelsPost::where('publish_date', '<=', Carbon::now())->where('status', 'published')->count();
+        $drafted_count = ModelsPost::where('status', 'drafted')->count();
+        $trashed_count = ModelsPost::whereNotNull('deleted_at')->count();
         if ($request->has('status') && $request->status != "all" && $request->status != "trashed") {
             $posts = $posts->withoutTrashed()->where('status', $request->status)->paginate(50);
         } elseif ($request->status == 'trashed') {

@@ -30,18 +30,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::localized(function () {
+Route::localized(function ()  {
+    $post = config('settings.routes') && isset(config('settings.routes')->post) ? config('settings.routes')->post : 'post';
+    $category = config('settings.routes') && isset(config('settings.routes')->category) ? config('settings.routes')->category : 'category';
+    $search = config('settings.routes') && isset(config('settings.routes')->search) ? config('settings.routes')->search : 'search';
+    $trends = config('settings.routes') && isset(config('settings.routes')->trends) ? config('settings.routes')->trends : 'trends';
+    $page = config('settings.routes') && isset(config('settings.routes')->page) ? config('settings.routes')->page : 'page';
+    $login = config('settings.routes') && isset(config('settings.routes')->login) ? config('settings.routes')->login : 'login';
+    $register = config('settings.routes') && isset(config('settings.routes')->register) ? config('settings.routes')->register : 'register';
+    $contact = config('settings.routes') && isset(config('settings.routes')->contact) ? config('settings.routes')->contact : 'contact-us';
     Route::get('/', [Index::class, 'index'])->name('frontend.index.show');
-    Route::get('/post/{slug}', [Posts::class, 'detail'])->name('frontend.posts.detail');
-    Route::get('/search', [Posts::class, 'search'])->name('frontend.posts.search');
-    Route::get('/trends', [Posts::class, 'all_trends'])->name('frontend.posts.trends');
-    Route::get('/category/{slug}', [Categories::class, 'detail'])->name('frontend.categories.detail');
-    Route::get('/page/{slug}', [Pages::class, 'detail'])->name('frontend.categories.detail');
+    Route::get('/'.$post.'/{slug}', [Posts::class, 'detail'])->name('frontend.posts.detail');
+    Route::get('/'.$search, [Posts::class, 'search'])->name('frontend.posts.search');
+    Route::get('/'.$trends, [Posts::class, 'all_trends'])->name('frontend.posts.trends');
+    Route::get('/'.$category.'/{slug}', [Categories::class, 'detail'])->name('frontend.categories.detail');
+    Route::get('/'.$page.'/{slug}', [Pages::class, 'detail'])->name('frontend.categories.detail');
     Route::get('/all', [Categories::class, 'filteredPosts'])->name('frontend.filter.all');
     Route::get('/all/{type}', [Categories::class, 'filteredPosts'])->name('frontend.filter.type');
-    Route::get('/login', [Index::class, 'login'])->name('frontend.login');
-    Route::post('/login', [Index::class, 'authenticate'])->name('frontend.login.authenticate');
-    Route::post('/register', [Index::class, 'register'])->name('frontend.login.register');
+    Route::get('/'.$login, [Index::class, 'login'])->name('frontend.login');
+    Route::post('/'.$login, [Index::class, 'authenticate'])->name('frontend.login.authenticate');
+    Route::post('/'.$register, [Index::class, 'register'])->name('frontend.login.register');
     Route::get('/confirm-account/{token}', [Index::class, 'confirm'])->name('frontend.login.confirm');
     Route::post('/get-token', [Index::class, 'getRememberToken'])->name('frontend.login.reset');
     Route::get('/reset-password/{token}', [Index::class, 'resetPasswordForm'])->name('frontend.login.reset_form');
@@ -49,7 +57,7 @@ Route::localized(function () {
     Route::get('/logout', [Index::class, 'logout'])->name('frontend.login.logout');
     Route::get('/rss-feeds', [Posts::class, 'rssList'])->name('frontend.rss.feeds');
     Route::get('/rss/{category}', [Posts::class, 'rssFeeds'])->name('frontend.rss.detail');
-    Route::get('/contact-us', [Contact::class, 'index'])->name('frontend.contact.index');
+    Route::get('/'.$contact, [Contact::class, 'index'])->name('frontend.contact.index');
     Route::post('/send-message', [Contact::class, 'sendMessage'])->name('frontend.contact.send');
 
 });

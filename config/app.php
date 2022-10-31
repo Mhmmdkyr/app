@@ -15,6 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
     'license_code' => env('LICENSE_CODE', false),
+    'version' => file_get_contents(storage_path('framework')."/.version"),
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -115,21 +115,4 @@ class DynamicProcess extends Controller
             }
         }
     }
-
-    public function getThumbnail($image){
-        $filename = pathinfo($image, PATHINFO_FILENAME);
-        $size = explode('-', $filename);
-        $size = end($size);
-        $filename = str_replace("-".$size, "", $filename);
-        $extension = pathinfo($image, PATHINFO_EXTENSION);
-        $width = explode('x', $size)[0];
-        $height = explode('x', $size)[1];
-        $original = $filename.".".$extension;
-        $path = public_path('uploads')."/".$original;
-        $_GET['w'] = $width;
-        $_GET['h'] = $height;
-        $_GET['src'] = $path;
-        require_once base_path('vendor')."/thumber.php";
-        exit;
-    }
 }

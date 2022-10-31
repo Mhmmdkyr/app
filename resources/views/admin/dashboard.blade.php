@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="alert alert-secondary system-update-monitor"><span>Mevcut sistem versiyonu :
-                    <b>{{ env('VERSION') }}</b></span> <button
+                    <b>{{ config('app.version') }}</b></span> <button
                     class="btn btn-sm btn-warning ml-auto p-1 pl-4 pr-4 update-check">Kontrol Et</button></div>
         </div>
     </div>
@@ -171,10 +171,22 @@
                             $('.system-update-monitor').removeClass('alert-warning')
                             $('.system-update-monitor').addClass('alert-success')
                             $('.system-update-monitor').find('span').html(data2.message)
-							elm.remove()
+                            elm.remove()
+                        } else {
+                            $('.system-update-monitor').removeClass('alert-warning')
+                            $('.system-update-monitor').addClass('alert-danger')
+                            $('.system-update-monitor').find('span').html(
+                                'Güncelleme işlemi başlatılırken hata meydana geldi. Lütfen daha sonra yeniden deneyin.')
+                            elm.remove()
                         }
                     });
                 })
+            } else {
+                $('.system-update-monitor').removeClass('alert-warning')
+                $('.system-update-monitor').addClass('alert-success')
+                $('.system-update-monitor').find('span').html(
+                    'Güzel haber! Sisteminiz güncel görünüyor 🥳')
+                elm.remove()
             }
         })
     })

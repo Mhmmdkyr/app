@@ -138,6 +138,10 @@ function uniq_id($prefix = 'i$')
 
 function uri($section, $slug = "", $withLang = true)
 {
+    $sect = explode("-", $section)[0];
+    if(config('settings.routes') && isset(config('settings.routes')->$sect)){
+        $section = config('settings.routes')->$sect;
+    }
     $url = url('/') . "/" . $section . "/" . $slug;
     if (app()->getLocale() != config('app.default_lang')->slug) {
         $url = url('/' . config('app.locale')) . "/" . $section . "/" . $slug;

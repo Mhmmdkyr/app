@@ -5,7 +5,7 @@
     <title>Imager</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
     <link rel="stylesheet" href="{{ url('/') }}/backend/css/common/imager.css?version?<?= VERSION ?>">
     <link rel="stylesheet" href="{{ url('/') }}/backend/css/common/jquery.fancybox.min.css?version?<?= VERSION ?>">
     <link rel="stylesheet" href="{{ url('/') }}/backend/css/jquery.Jcrop.css?version=<?= VERSION ?>" />

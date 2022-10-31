@@ -1,13 +1,6 @@
 <div class="page-inner">
-    <div class="page-header mb-0">
-        <h4 class="page-title">{{ __('Pages') }}</h4>
-        <a href="{{ route('admin.settings.downloaddb') }}" class="btn btn-primary btn-border ml-auto"><i
-                class="fas fa-plus"></i> {{ __('Add Page') }}</a>
-    </div>
-    <div class="row mb-2 mt-4">
-        <div class="col-lg-8 col-md-8">
-
-        </div>
+    <div class="page-header mb-4">
+        <h4 class="page-title">{{ __('Translates') }}</h4>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -41,17 +34,8 @@
                         @endforeach
                     </div>
                 </div>
-                <button class="btn btn-primary float-right">Save</button>
+                <button class="btn btn-primary float-right">{{ __('Save Changes') }}</button>
             </form>
         </div>
     </div>
 </div>
-<button class="cevir">çevir</button>
-<script>
-$('.cevir').click(function(){
-    $('.translate-label').each(function(i, item){
-        var text = $(item).text();
-        $(item).parents('.form-group').find('input.form-control').val(text);
-    })
-})
-</script>

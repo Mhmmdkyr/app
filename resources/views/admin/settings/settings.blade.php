@@ -63,11 +63,11 @@
                                             aria-selected="false">{{ __('Contact Page') }}</a>
                                     </li>
                                     @if ($lang == config('app.default_lang.id'))
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="custom-html-tab" data-toggle="tab"
-                                            href="#custom-html" role="tab" aria-controls="custom-html"
-                                            aria-selected="false">{{ __('Custom HTML') }}</a>
-                                    </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="custom-html-tab" data-toggle="tab"
+                                                href="#custom-html" role="tab" aria-controls="custom-html"
+                                                aria-selected="false">{{ __('Custom HTML') }}</a>
+                                        </li>
                                     @endif
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link" id="social-tab" data-toggle="tab" href="#social"
@@ -80,7 +80,11 @@
                                                 role="tab" aria-controls="email"
                                                 aria-selected="false">{{ __('Email Settings') }}</a>
                                         </li>
-
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="permanent-links-tab" data-toggle="tab"
+                                                href="#permanent-links" role="tab" aria-controls="permanent-links"
+                                                aria-selected="false">{{ __('Kalıcı Bağlantılar') }}</a>
+                                        </li>
                                         <li class="nav-item" role="presentation">
                                             <a class="nav-link" id="url-shortener-tab" data-toggle="tab"
                                                 href="#url-shortener" role="tab" aria-controls="url-shortener"
@@ -181,9 +185,14 @@
                                                         <label for="title"
                                                             class="col-sm-2 col-form-label">{{ __('Cookie Alert') }}</label>
                                                         <div class="col-sm-10">
-                                                            <select name="settings[cookie_alert]" id="cookie_alert" class="form-control">
-                                                                <option value="0"{{ isset($settings['cookie_alert']) && $settings["cookie_alert"] == 0 ? ' selected' : '' }}>{{ __('Inactive') }}</option>
-                                                                <option value="1"{{ isset($settings['cookie_alert']) && $settings["cookie_alert"] == 1 ? ' selected' : '' }}>{{ __('Active') }}</option>
+                                                            <select name="settings[cookie_alert]" id="cookie_alert"
+                                                                class="form-control">
+                                                                <option
+                                                                    value="0"{{ isset($settings['cookie_alert']) && $settings['cookie_alert'] == 0 ? ' selected' : '' }}>
+                                                                    {{ __('Inactive') }}</option>
+                                                                <option
+                                                                    value="1"{{ isset($settings['cookie_alert']) && $settings['cookie_alert'] == 1 ? ' selected' : '' }}>
+                                                                    {{ __('Active') }}</option>
                                                             </select>
 
                                                         </div>
@@ -192,9 +201,14 @@
                                                         <label for="title"
                                                             class="col-sm-2 col-form-label">{{ __('Newsletter Modal') }}</label>
                                                         <div class="col-sm-10">
-                                                            <select name="settings[newsletter_modal]" id="newsletter_modal" class="form-control">
-                                                                <option value="0"{{ isset($settings['newsletter_modal']) && $settings["newsletter_modal"] == 0 ? ' selected' : '' }}>{{ __('Inactive') }}</option>
-                                                                <option value="1"{{ isset($settings['newsletter_modal']) && $settings["newsletter_modal"] == 1 ? ' selected' : '' }}>{{ __('Active') }}</option>
+                                                            <select name="settings[newsletter_modal]"
+                                                                id="newsletter_modal" class="form-control">
+                                                                <option
+                                                                    value="0"{{ isset($settings['newsletter_modal']) && $settings['newsletter_modal'] == 0 ? ' selected' : '' }}>
+                                                                    {{ __('Inactive') }}</option>
+                                                                <option
+                                                                    value="1"{{ isset($settings['newsletter_modal']) && $settings['newsletter_modal'] == 1 ? ' selected' : '' }}>
+                                                                    {{ __('Active') }}</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -492,61 +506,272 @@
                                                 <label for="footer-html"
                                                     class="col-sm-2 col-form-label">{{ __('Header HTML Code') }}</label>
                                                 <div class="col-sm-10">
-                                                   <textarea name="settings[header_html]" id="footer-html" cols="30" rows="10" class="form-control">{{ isset($settings['header_html']) ? $settings['header_html'] : config('settings.header_html') }}</textarea>
+                                                    <textarea name="settings[header_html]" id="footer-html" cols="30" rows="10" class="form-control">{{ isset($settings['header_html']) ? $settings['header_html'] : config('settings.header_html') }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="footer-html"
                                                     class="col-sm-2 col-form-label">{{ __('Footer HTML Code') }}</label>
                                                 <div class="col-sm-10">
-                                                   <textarea name="settings[footer_html]" id="footer-html" cols="30" rows="10" class="form-control">{{ isset($settings['footer_html']) ? $settings['footer_html'] : config('settings.footer_html') }}</textarea>
+                                                    <textarea name="settings[footer_html]" id="footer-html" cols="30" rows="10" class="form-control">{{ isset($settings['footer_html']) ? $settings['footer_html'] : config('settings.footer_html') }}</textarea>
                                                 </div>
                                             </div>
 
                                         </div>
+                                        <div class="tab-pane fade" id="permanent-links" role="tabpanel"
+                                            aria-labelledby="permanent-links-tab">
+                                            <div class="row">
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="form-group row">
+                                                        <label for="shortener-enabled"
+                                                            class="col-sm-2 col-form-label">{{ __('Posts') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span
+                                                                        class="input-group-text">{{ url('/') }}/</span>
+                                                                </div>
+                                                                <input type="text" class="form-control"
+                                                                    name="settings[routes][post]"
+                                                                    aria-label="{{ __('Default: post') }}"
+                                                                    placeholder="{{ __('Default: post') }}"
+                                                                    value="{{ isset($settings['routes']->post) ? $settings['routes']->post : '' }}">
+                                                                <div class="input-group-append">
+                                                                    <span
+                                                                        class="input-group-text">/{{ __('example-post-permalink') }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="shortener-enabled"
+                                                            class="col-sm-2 col-form-label">{{ __('Categories') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span
+                                                                        class="input-group-text">{{ url('/') }}/</span>
+                                                                </div>
+                                                                <input type="text" class="form-control"
+                                                                    name="settings[routes][category]"
+                                                                    aria-label="{{ __('Default: category') }}"
+                                                                    placeholder="{{ __('Default: category') }}"
+                                                                    value="{{ isset($settings['routes']->category) ? $settings['routes']->category : '' }}">
+                                                                <div class="input-group-append">
+                                                                    <span
+                                                                        class="input-group-text">/{{ __('example-category-permalink') }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="shortener-enabled"
+                                                            class="col-sm-2 col-form-label">{{ __('Search') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span
+                                                                        class="input-group-text">{{ url('/') }}/</span>
+                                                                </div>
+                                                                <input type="text" class="form-control"
+                                                                    name="settings[routes][search]"
+                                                                    aria-label="{{ __('Default: search') }}"
+                                                                    placeholder="{{ __('Default: search') }}"
+                                                                    value="{{ isset($settings['routes']->search) ? $settings['routes']->search : '' }}">
+                                                                <div class="input-group-append">
+                                                                    <span
+                                                                        class="input-group-text">/{{ __('?q=example-keyword') }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="shortener-enabled"
+                                                            class="col-sm-2 col-form-label">{{ __('Trends') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span
+                                                                        class="input-group-text">{{ url('/') }}/</span>
+                                                                </div>
+                                                                <input type="text" class="form-control"
+                                                                    name="settings[routes][trends]"
+                                                                    aria-label="{{ __('Default: trends') }}"
+                                                                    placeholder="{{ __('Default: trends') }}"
+                                                                    value="{{ isset($settings['routes']->trends) ? $settings['routes']->trends : '' }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="shortener-enabled"
+                                                            class="col-sm-2 col-form-label">{{ __('Page') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span
+                                                                        class="input-group-text">{{ url('/') }}/</span>
+                                                                </div>
+                                                                <input type="text" class="form-control"
+                                                                    name="settings[routes][page]"
+                                                                    aria-label="{{ __('Default: page') }}"
+                                                                    placeholder="{{ __('Default: page') }}"
+                                                                    value="{{ isset($settings['routes']->page) ? $settings['routes']->page : '' }}">
+                                                                <div class="input-group-append">
+                                                                    <span
+                                                                        class="input-group-text">/{{ __('example-page-permalink') }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="shortener-enabled"
+                                                            class="col-sm-2 col-form-label">{{ __('Login') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span
+                                                                        class="input-group-text">{{ url('/') }}/</span>
+                                                                </div>
+                                                                <input type="text" class="form-control"
+                                                                    name="settings[routes][login]"
+                                                                    aria-label="{{ __('Default: login') }}"
+                                                                    placeholder="{{ __('Default: login') }}"
+                                                                    value="{{ isset($settings['routes']->login) ? $settings['routes']->login : '' }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="shortener-enabled"
+                                                            class="col-sm-2 col-form-label">{{ __('Register') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span
+                                                                        class="input-group-text">{{ url('/') }}/</span>
+                                                                </div>
+                                                                <input type="text" class="form-control"
+                                                                    name="settings[routes][register]"
+                                                                    aria-label="{{ __('Default: register') }}"
+                                                                    placeholder="{{ __('Default: register') }}"
+                                                                    value="{{ isset($settings['routes']->register) ? $settings['routes']->register : '' }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="shortener-enabled"
+                                                            class="col-sm-2 col-form-label">{{ __('Contact Us') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span
+                                                                        class="input-group-text">{{ url('/') }}/</span>
+                                                                </div>
+                                                                <input type="text" class="form-control"
+                                                                    name="settings[routes][contact]"
+                                                                    aria-label="{{ __('Default: contact-us') }}"
+                                                                    placeholder="{{ __('Default: contact-us') }}"
+                                                                    value="{{ isset($settings['routes']->contact) ? $settings['routes']->contact : '' }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="alert alert-secondary">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12">
+                                                                <h4>Kalıcı Bağlantılar nedir?</h4>
+                                                                <p class="m-0 p-0">Kalıcı bağlantılar, içerik, sayfa ya
+                                                                    da kategori gibi url'ler
+                                                                    için
+                                                                    belirtilen URL Öneklerini düzenleyebileceğiniz
+                                                                    kısımdır.</p>
+                                                                <p class="m-0 p-0">Gerek arama motorları optimizasyonu
+                                                                    (seo) açısından, gerekse
+                                                                    url'lerinizi kişiselleştirmek için URL Öneklerinizi
+                                                                    düzenleyebilirsiniz.</p>
+                                                                <p class="text-danger mb-0 pb-0"><b>Önemli Not:</b> URL
+                                                                    Öneki
+                                                                    değişikliğini,
+                                                                    siteniz arama motorları tarafından taranmadan önce
+                                                                    yapmanız,
+                                                                    seo
+                                                                    açısından kayıplarınızı engeller. Bu yüzden bu
+                                                                    ayarları sık
+                                                                    sık
+                                                                    değiştirmeniz önerilmez.</p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="tab-pane fade" id="url-shortener" role="tabpanel"
                                             aria-labelledby="url-shortener-tab">
-                                            <div class="form-group row">
-                                                <label for="shortener-enabled"
-                                                    class="col-sm-2 col-form-label">{{ __('URL Shortener Enabled') }}</label>
-                                                <div class="col-sm-10">
-                                                    <select name="settings[shortener]" id="shortener-enabled"
-                                                        class="form-control">
-                                                        <option
-                                                            value="0"{{ isset($settings['shortener']) && $settings['shortener'] == 0 ? '' : ' selected' }}>
-                                                            {{ __('No') }}</option>
-                                                        <option
-                                                            value="1"{{ isset($settings['shortener']) && $settings['shortener'] == 1 ? ' selected' : '' }}>
-                                                            {{ __('Yes') }}</option>
-                                                    </select>
+                                            <div class="row">
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="form-group row">
+                                                        <label for="shortener-enabled"
+                                                            class="col-sm-2 col-form-label">{{ __('URL Shortener Enabled') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <select name="settings[shortener]" id="shortener-enabled"
+                                                                class="form-control">
+                                                                <option
+                                                                    value="0"{{ isset($settings['shortener']) && $settings['shortener'] == 0 ? '' : ' selected' }}>
+                                                                    {{ __('No') }}</option>
+                                                                <option
+                                                                    value="1"{{ isset($settings['shortener']) && $settings['shortener'] == 1 ? ' selected' : '' }}>
+                                                                    {{ __('Yes') }}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="form-group row {{ isset($settings['shortener']) && $settings['shortener'] == 0 ? 'd-none' : '' }} different-domain-div">
+                                                        <label for="shortener_domain"
+                                                            class="col-sm-2 col-form-label">{{ __('Select Domain') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <select name="settings[select_domain]" id="select_domain"
+                                                                class="form-control">
+                                                                <option
+                                                                    value="0"{{ isset($settings['shortener']) && isset($settings['select_domain']) && $settings['select_domain'] != 1 ? ' selected' : '' }}>
+                                                                    {{ __('Use main domain') }}</option>
+                                                                <option
+                                                                    value="1"{{ isset($settings['shortener']) && isset($settings['select_domain']) && $settings['select_domain'] == 1 ? ' selected' : '' }}>
+                                                                    {{ __('Use different domain') }}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="different-domain {{ isset($settings['shortener']) && $settings['shortener'] == 1 && isset($settings['select_domain']) && $settings['select_domain'] == 1 ? '' : 'd-none' }} row">
+                                                        <label for="shortener_domain"
+                                                            class="col-sm-2 col-form-label">{{ __('Use Different Domain') }}</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control"
+                                                                name="settings[shortener_domain]"
+                                                                id="shortener_domain"
+                                                                value="{{ isset($settings['shortener_domain']) ? $settings['shortener_domain'] : '' }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="alert alert-secondary">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12">
+                                                                <h4>URL Kısaltma nedir?</h4>
+                                                                <p>URL Kısaltma, içerikleri paylaşırken, uzun url'ler
+                                                                    yerine daha kısa url'leri kullanmanıza olanak
+                                                                    sağlar.</p>
+                                                                <p>Yeni içerik eklendiğinde, bu içeriğe ait otomatik
+                                                                    oluşturulan bir bağlantı da eklenir.</p>
+                                                                <p>Ayrıca kısa URL'ler için farklı bir alan adı da
+                                                                    belirleyebilirsiniz.</p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div
-                                                class="form-group row {{ isset($settings['shortener']) && $settings['shortener'] == 0 ? 'd-none' : '' }} different-domain-div">
-                                                <label for="shortener_domain"
-                                                    class="col-sm-2 col-form-label">{{ __('Select Domain') }}</label>
-                                                <div class="col-sm-10">
-                                                    <select name="settings[select_domain]" id="select_domain"
-                                                        class="form-control">
-                                                        <option
-                                                            value="0"{{ isset($settings['shortener']) && isset($settings['select_domain']) && $settings['select_domain'] != 1 ? ' selected' : '' }}>
-                                                            {{ __('Use main domain') }}</option>
-                                                        <option
-                                                            value="1"{{ isset($settings['shortener']) && isset($settings['select_domain']) && $settings['select_domain'] == 1 ? ' selected' : '' }}>
-                                                            {{ __('Use different domain') }}</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="different-domain {{ isset($settings['shortener']) && $settings['shortener'] == 1 && isset($settings['select_domain']) && $settings['select_domain'] == 1 ? '' : 'd-none' }} row">
-                                                <label for="shortener_domain"
-                                                    class="col-sm-2 col-form-label">{{ __('Use Different Domain') }}</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control"
-                                                        name="settings[shortener_domain]" id="shortener_domain"
-                                                        value="{{ isset($settings['shortener_domain']) ? $settings['shortener_domain'] : '' }}">
-                                                </div>
-                                            </div>
+
                                         </div>
                                     @endif
                                 </div>

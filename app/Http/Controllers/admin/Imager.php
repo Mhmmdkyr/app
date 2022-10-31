@@ -24,6 +24,7 @@ class Imager extends AdminController
             $storage_path = public_path("uploads") . "/" . $request->dir . "/";
         }
         $files = glob($storage_path . '*.{jpeg,gif,png,jpg}', GLOB_BRACE);
+        array_multisort(array_map('filemtime', $files), SORT_NUMERIC, SORT_DESC, $files);
         if ($request->has('filetype')) {
             switch ($request->filetype) {
                 case 'images':
@@ -61,11 +62,8 @@ class Imager extends AdminController
             $all_files[] = $add_files;
             $m++;
         }
-        usort($all_files, function ($a, $b) {
-            return $a['created'] - $b['created'];
-        });
         $pages = round($m / $limit);
-        $collection = ['files' => array_reverse($all_files), 'total' => $m, 'pages' => $pages];
+        $collection = ['files' => $all_files, 'total' => $m, 'pages' => $pages];
         return response()->json($collection);
     }
 
